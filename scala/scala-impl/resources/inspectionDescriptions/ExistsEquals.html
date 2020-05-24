@@ -1,0 +1,23 @@
+<html>
+<body>
+Replaces exists or forall with contains if possible.
+
+<p>
+Before:
+<pre>
+set.exists(x => x == "a")
+set.forall(x => x != "a")
+</pre>
+</p>
+<p>
+
+<br>
+After:
+<pre>
+set.contains("a")
+!set.contains("a")
+</pre>
+</p>
+
+</body>
+</html>

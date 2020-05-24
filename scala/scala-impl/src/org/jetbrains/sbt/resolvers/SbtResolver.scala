@@ -1,0 +1,68 @@
+package org.jetbrains.sbt.resolvers
+
+import java.io.File
+import java.util.regex.Pattern
+
+import com.intellij.diagnostic.PluginException
+import com.intellij.openapi.project.Project
+import com.intellij.serialization.PropertyMapping
+import org.jetbrains.idea.maven.indices.MavenIndicesManager
+import org.jetbrains.sbt.SbtBundle
+import org.jetbrains.sbt.resolvers.indexes.{FakeMavenIndex, MavenProxyIndex, ResolverIndex}
+
+/**
+  * @author Mikhail Mutcianko
+  * @since 26.07.16
+  */
+sealed trait SbtResolver extends Serializable {
+  def name: String
+  def root: String
+  def getIndex(project: Project): Option[ResolverIndex]
+  override def hashCode(): Int = toString.hashCode
+  override def equals(o: scala.Any): Boolean = toString == o.toString
+}
+
+object SbtResolver {
+  def localCacheResolver(localCachePath: Option[String]): SbtResolver = {
+    val defaultPath = System.getProperty("user.home") + "/.ivy2/cache".replace('/', File.separatorChar)
+    new SbtIvyResolver(SbtBundle.message("sbt.local.cache"), localCachePath getOrElse defaultPath)
+  }
+
+  private val DELIMITER = "|"
+  def fromString(str: String): Option[SbtResolver] = {
+    str.split(Pattern.quote(DELIMITER), 3).toSeq match {
+      case Seq(root, "maven", name) => Some(new SbtMavenResolver(name, root))
+      case Seq(root, "ivy", name) => Some(new SbtIvyResolver(name, root))
+      case _ => None
+    }
+  }
+}
+
+class SbtMavenResolver @PropertyMapping(Array("name", "root")) (
+                                                                 override val name: String,
+                                                                 override val root: String
+) extends SbtResolver {
+
+  override def getIndex(project: Project): Option[ResolverIndex] = try {
+      MavenIndicesManager.getInstance()
+      Some(new MavenProxyIndex(root, name, project))
+    } catch {
+    case _: PluginException =>
+      Some(new FakeMavenIndex(root, name, project))
+    case e: NoClassDefFoundError if e.getMessage.contains("MavenIndicesManager") =>
+      Some(new FakeMavenIndex(root, name, project))
+  }
+
+  override def toString = s"$root|maven|$name"
+}
+
+class SbtIvyResolver @PropertyMapping(Array("name", "root")) (
+                                                               override val name: String,
+                                                               override val root: String
+) extends SbtResolver {
+
+  override def getIndex(project: Project): Option[ResolverIndex] =
+    SbtIndexesManager.getInstance(project).map(_.getIvyIndex(name, root))
+
+  override def toString = s"$root|ivy|$name"
+}

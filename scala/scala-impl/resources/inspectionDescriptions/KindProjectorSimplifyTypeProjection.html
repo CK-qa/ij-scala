@@ -1,0 +1,19 @@
+<html>
+<body>
+This inspection runs when Kind Projector plugin is enabled. It finds type projections and converts them into Kind Projector format.
+
+<p>
+Before:
+<pre>
+def a: ({type L[A] = (A, A)})#L
+</pre>
+
+<br>
+After:
+<pre>
+def a: λ[A => (A, A)]
+</pre>
+</p>
+
+</body>
+</html>

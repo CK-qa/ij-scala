@@ -1,0 +1,34 @@
+<html>
+<body>
+Detects type checks and type casts in a series of if-else statements and replaces it by pattern matching.
+
+<p>
+Before: 
+<pre>
+val value = 0
+if (value.isInstanceOf[Int]) {
+  val x = value.asInstanceOf[Int] + 1
+  val y = value.asInstanceOf[Int] + 2
+} else if (value.isInstanceOf[Long]) {
+  val x = value.asInstanceOf[Long]
+  println(x)
+}
+</pre>
+
+<br>
+After:
+<pre>
+val value = 0
+value match {
+  case i: Int =>
+    val x = i + 1
+    val y = i + 2
+  case x: Long =>
+    println(x)
+  case _ =>
+}
+</pre>
+</p>
+
+</body>
+</html>

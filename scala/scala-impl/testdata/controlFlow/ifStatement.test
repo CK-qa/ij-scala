@@ -1,0 +1,21 @@
+var a = 42
+var b = a
+if (a > 0)
+  a = b
+else
+  b = 239
+println(b)
+-----
+0(1) element: None
+1(2) VAR a
+2(3) READ a
+3(4) VAR b
+4(5) element: IfStatement
+5(6) READ a
+6(7,9) READ >
+7(8) READ b
+8(10) WRITE a
+9(10) WRITE b
+10(11) READ println
+11(12) READ b
+12() element: None

@@ -1,0 +1,21 @@
+<html>
+<body>
+Simplifying equality of the instance of <code>Option</code> and <code>Some(x)</code>.
+
+<p>
+Before:
+<pre>
+option == Some(x)
+Some(x) != option
+</pre>
+
+<br>
+After:
+<pre>
+option.contains(x)
+!option.contains(x)
+</pre>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+<body>
+Replaces filter and check for emptiness with exists or forall.
+
+<p>
+Before:
+<pre>
+seq.filter(p).size == 0)
+seq.filter(p).length > 0
+seq.filterNot(p).isEmpty
+seq.filterNot(p).nonEmpty
+</pre>
+
+<br>
+After:
+<pre>
+!seq.exists(p)
+seq.exists(p)
+seq.forall(p)
+!seq.forall(p)
+</pre>
+</p>
+
+</body>
+</html>

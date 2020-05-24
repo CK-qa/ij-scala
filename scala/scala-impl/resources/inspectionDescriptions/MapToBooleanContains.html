@@ -1,0 +1,21 @@
+<html>
+<body>
+Replaces map with boolean function and contains true/false with <code>.exists()</code> or <code>!.forall()</code>.
+
+<p>
+Before:
+<pre>
+seq.map(p).contains(true)
+seq.map(p).contains(false)
+</pre>
+
+<br>
+After:
+<pre>
+seq.exists(p)
+!seq.forall(p)
+</pre>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<body>
+Replaces map and getOrElse(false/true) with exists/forall.
+
+<p>
+Before: 
+<pre>
+option.map(p).getOrElse(false)
+option.map(p).getOrElse(true)
+</pre>
+
+<br>
+After:
+<pre>
+option.exists(p)
+option.forall(p)
+</pre>
+</p>
+
+</body>
+</html>

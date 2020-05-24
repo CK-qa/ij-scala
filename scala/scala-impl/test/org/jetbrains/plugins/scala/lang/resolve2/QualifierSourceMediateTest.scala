@@ -1,0 +1,23 @@
+package org.jetbrains.plugins.scala.lang.resolve2
+
+
+/**
+ * Pavel.Fatin, 02.02.2010
+ */
+
+class QualifierSourceMediateTest extends ResolveTestBase {
+  override def folderPath: String = {
+    super.folderPath + "qualifier/source/mediate/"
+  }
+
+  def testCaseClass(): Unit = doTest()
+  def testCaseClassObject(): Unit = doTest()
+  //TODO
+//  def testCaseClassObjectSyntetic = doTest
+  def testCaseObject(): Unit = doTest()
+  //TODO
+//  def testCaseObjectSyntetic = doTest
+  def testClass(): Unit = doTest()
+  def testObject(): Unit = doTest()
+  def testTrait(): Unit = doTest()
+}

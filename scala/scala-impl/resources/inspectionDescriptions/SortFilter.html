@@ -1,0 +1,21 @@
+<html>
+<body>
+Swaps sort and filter for better performance.
+
+<p>
+Before:
+<pre>
+seq.sortWith(lessThan).filter(p)
+seq.sortBy(f).filter(p)
+</pre>
+
+<br>
+After:
+<pre>
+seq.filter(p).sortWith(lessThan)
+seq.filter(p).sortBy(f)
+</pre>
+</p>
+
+</body>
+</html>

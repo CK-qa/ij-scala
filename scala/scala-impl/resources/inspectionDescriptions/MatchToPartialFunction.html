@@ -1,0 +1,25 @@
+<html>
+<body>
+Detects if the match statement can be converted to pattern matching anonymous function.
+
+<p> 
+Before:
+<pre>
+iterable.map(value => value match {
+    case Some(value) => whenValue(value)
+    case None => whenNothing()
+})
+</pre>
+
+<br>
+After:
+<pre>
+iterable.map {
+    case Some(value) => whenValue(value)
+    case None => whenNothing()
+}
+</pre>
+</p>
+
+</body>
+</html>

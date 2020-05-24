@@ -1,0 +1,20 @@
+val a = Nil
+val d = for (e <- a; if e >=0; c = e * e) yield c
+d
+-----
+0(1) element: None
+1(2) READ Nil
+2(3) VAL a
+3(4,13) element: ForStatement
+4(5) READ a
+5(6) VAL e
+6(7) READ e
+7(8) READ >=
+8(9) READ e
+9(10) READ *
+10(11) READ e
+11(12) VAL c
+12(13) READ c
+13(14) VAL d
+14(15) READ d
+15() element: None

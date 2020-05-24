@@ -1,0 +1,21 @@
+<html>
+<body>
+Replaces chained conversions of a sequence to Set and back with <code>.distinct</code> call.
+
+<p>
+Before:
+<pre>
+seq.toSet.toSeq
+list.toSet.to[List]
+</pre>
+
+<br>
+After:
+<pre>
+seq.distinct
+list.distinct
+</pre>
+</p>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<html>
+<body>
+Detects using <code>map</code> with expressions which produce no result. If possible, this inspection suggest to replace such <code>map</code> call with <code>foreach</code> one.
+
+<p>
+Before: 
+<pre>
+seq.map(println(_))
+</pre>
+
+<br>
+After:
+<pre>
+seq.foreach(println(_))
+</pre>
+</p>
+
+</body>
+</html>

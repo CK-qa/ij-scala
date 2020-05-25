@@ -10,7 +10,7 @@ Plugin that implements Scala, sbt, Play 2, SSP and Hocon support in IntelliJ IDE
 
 ## General information
 
-- To get information about how to install and use this plugin in IDEA, please
+- To get information about how to install and use this plugin in IntelliJ IDEA, please
   use [IntelliJ IDEA online help](https://www.jetbrains.com/idea/help/scala.html).
 
 - If you have any question about the Scala plugin, we'd be glad to answer it in [our
@@ -27,8 +27,8 @@ Plugin that implements Scala, sbt, Play 2, SSP and Hocon support in IntelliJ IDE
 ### Prerequisites
 In order to take part in Scala plugin development, you need:
 
-1. IntelliJ IDEA 2020.1 or higher with a compatible version of Scala plugin
-2. JDK 8
+1. IntelliJ IDEA 2020.2 or higher with a compatible version of Scala plugin
+2. JDK 9
 3. (optional but recommended) Enable "[internal mode](https://www.jetbrains.org/intellij/sdk/docs/reference_guide/internal_actions/enabling_internal.html)" in IDEA
 
 ### Setup
@@ -42,14 +42,14 @@ In order to take part in Scala plugin development, you need:
 2. Open IntelliJ IDEA, select `File -> New -> Project from existing sources`, point to
 the directory where Scala plugin repository is and then import it as sbt project.
 
-3. In the next step, select JDK 8 as project JDK (create it from an installed JDK if necessary).
+3. In the next step, select JDK 9 as project JDK (create it from an installed JDK if necessary).
 
 5. Select the `scalaCommunity` run configuration and select the `Run` or `Debug` button to build and start a
-development version of IDEA with the Scala plugin.
+development version of IntelliJ IDEA with the Scala plugin.
 
-## Browsing IntelliJ platform sources
+## Browsing IntelliJ IDEA platform sources
 
-When loading the plugin in sbt, the IntelliJ platform is downloaded to `<home>/.ScalaPluginIC/sdk/<sdk version>/`. 
+When loading the plugin in sbt, the IntelliJ IDEA platform is downloaded to `<home>/.ScalaPluginIC/sdk/<sdk version>/`. 
 IntelliJ platform sources should automatically attach after project has been imported and indices have been built.
 
 However, if this didn't happen, and if you're seeing decompiled code when opening a platform API class you can click
@@ -82,9 +82,9 @@ when you set up the project as described above.
 
 ### As a standalone plugin
 
-To run and distribute a modified version of the plugin in a regular IntelliJ instance, you need to package it.
+To run and distribute a modified version of the plugin in a regular IntelliJ IDEA instance, you need to package it.
 
 1. on the sbt shell, run `packageArtifactZip`. This will output the generated plugin zip location
    (typically into `<project directory>/target/scala-plugin.zip`).
-2. In IntelliJ, open Preferences, section Plugins, choose "Install plugin from disk..." and navigate to the scala-plugin.zip
-3. Restart IntelliJ
+2. In IntelliJ IDEA, open Preferences, section Plugins, choose "Install plugin from disk..." and navigate to the scala-plugin.zip
+3. Restart IntelliJ IDEA
